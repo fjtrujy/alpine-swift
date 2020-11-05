@@ -2,21 +2,23 @@ FROM alpine:latest
 
 # Install required dependencies
 RUN apk add \
+  build-base \
+  binutils \
+  gcc \
   git \
   cmake \
   curl \
+  glib-static \
+  libbsd-dev \
+  libedit \
+  libedit-dev \
+  icu-dev \
+  libstdc++ \
+  pkgconfig \
   python2 \
-  python3 \
-  ninja \
-  bash \
-  build-base \
-  clang clang-dev \
-  screen \
-  htop
-
-RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
-  python get-pip.py
-RUN pip install six
+  sqlite \
+  tzdata \
+  zlib-dev
 
 RUN git clone https://github.com/apple/swift.git
 RUN ./swift/utils/update-checkout --clone
