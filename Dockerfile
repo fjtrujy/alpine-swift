@@ -5,6 +5,7 @@ RUN apk add \
   build-base \
   binutils \
   gcc \
+  clang clang-dev \
   git \
   cmake \
   curl \
