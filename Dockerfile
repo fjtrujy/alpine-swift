@@ -20,12 +20,13 @@ RUN pip install six
 
 RUN git clone https://github.com/apple/swift.git
 RUN ./swift/utils/update-checkout --clone
-RUN ./swift/utils/build-script --release
+
+# Compile and choose installation folder
+RUN ./swift/utils/build-script --preset=buildbot_linux,no_test install_destdir=/swift-install installable_package=/swift-package/swift.tar.gz
 
 
 # Second stage of Dockerfile
-# We CAN NOT use alpine:latest because we need an alpine version based in glibc for aapt2
-# FROM alpine:latest
+FROM alpine:latest
 
-# Copy Firebase
-# COPY --from=0 /firebase /usr/bin/firebase
+# Copy Swift
+COPY --from=0 swift-install/usr/ /usr/local/
