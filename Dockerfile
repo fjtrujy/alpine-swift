@@ -8,6 +8,7 @@ RUN apk add \
   git \
   cmake \
   curl \
+  bash \
   glib-static \
   libbsd-dev \
   libedit \
