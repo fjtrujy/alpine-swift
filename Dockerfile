@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM frolvlad/alpine-glibc
 
 # Install required dependencies
 RUN apk add \
@@ -7,21 +7,11 @@ RUN apk add \
   gcc \
   clang clang-dev \
   git \
-  musl-dev \
   cmake \
   curl \
   bash \
-  glib-static \
-  libbsd-dev \
-  libedit \
-  libedit-dev \
-  icu-dev \
-  libstdc++ \
   pkgconfig \
-  python2 \
-  sqlite \
-  tzdata \
-  zlib-dev
+  python2
 
 # We require to have six module
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
