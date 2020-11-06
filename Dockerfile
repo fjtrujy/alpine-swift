@@ -7,6 +7,7 @@ RUN apk add \
   gcc \
   clang clang-dev \
   git \
+  musl-dev \
   cmake \
   curl \
   bash \
