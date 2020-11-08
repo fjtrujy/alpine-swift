@@ -12,7 +12,8 @@ RUN apk add \
   bash \
   pkgconfig \
   python2 \
-  gnupg
+  gnupg \
+  libedit
 
 ARG SWIFT_SIGNING_KEY=A62AE125BBBFBB96A6E042EC925CC1CCED3D1561
 ARG SWIFT_PLATFORM=ubuntu20.04
