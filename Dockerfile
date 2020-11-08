@@ -15,6 +15,8 @@ RUN apk add \
   gnupg \
   libedit
 
+RUN ln -s /usr/lib/libedit.so.0 /usr/lib/libedit.so.2
+
 ARG SWIFT_SIGNING_KEY=A62AE125BBBFBB96A6E042EC925CC1CCED3D1561
 ARG SWIFT_PLATFORM=ubuntu20.04
 ARG SWIFT_BRANCH=swift-5.3-release
