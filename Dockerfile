@@ -16,8 +16,7 @@ RUN apk add \
 
 RUN wget "http://mirrors.kernel.org/ubuntu/pool/main/libe/libedit/libedit2_3.1-20191231-1_i386.deb" -O "libedit2.deb"
 RUN ar x libedit2.deb
-RUN tar --extract --xz --file="data.tar.xz" --strip=4 --directory=/usr/lib/ ./usr/lib/x86_64-linux-gnu/libedit.so.2.0.63
-RUN ln -s libedit.so.2.0.63 /usr/lib/libedit.so.2
+RUN tar --extract --xz --file="data.tar.xz"
 
 ARG SWIFT_SIGNING_KEY=A62AE125BBBFBB96A6E042EC925CC1CCED3D1561
 ARG SWIFT_PLATFORM=ubuntu20.04
