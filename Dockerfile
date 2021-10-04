@@ -4,7 +4,6 @@ FROM alpine:latest
 RUN apk add \
   build-base \
   binutils \
-  gcc \
   clang clang-dev \
   git \
   musl-dev \
@@ -18,15 +17,20 @@ RUN apk add \
   icu-dev \
   libstdc++ \
   pkgconfig \
-  python2 \
+  python3 py3-pip \
   sqlite \
   tzdata \
-  zlib-dev
+  zlib-dev \
+  ninja \
+  sccache
 
-# We require to have six module
-RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
-  python get-pip.py
 RUN pip install six
+
+# Check dependencies https://github.com/apple/swift/blob/main/docs/HowToGuides/GettingStarted.md#spot-check-dependencies
+RUN cmake --version
+RUN python3 --version
+RUN ninja --version
+RUN sccache --version
 
 # Clone repo and dependencies
 RUN git clone https://github.com/apple/swift.git
