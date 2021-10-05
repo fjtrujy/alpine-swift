@@ -3,6 +3,7 @@ FROM alpine:latest
 # Install required dependencies
 RUN apk add \
   build-base \
+  curl \
   clang \
   cmake \
   git \
@@ -11,15 +12,12 @@ RUN apk add \
   libedit-dev \
   icu-dev \
   ncurses-dev \
-  python3-dev \
   python3 \
   sqlite-dev \
   libxml2-dev \
   ninja \
   pkgconfig \
-  python2-dev \
-  py3-pip \
-  py3-setuptools \
+  python2 \
   rsync \
   swig \
   tzdata \
@@ -29,6 +27,9 @@ RUN apk add \
 RUN apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
   sccache
 
+# We require to have six module
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
+  python3 get-pip.py
 RUN pip install six
 
 # Check dependencies https://github.com/apple/swift/blob/main/docs/HowToGuides/GettingStarted.md#spot-check-dependencies
