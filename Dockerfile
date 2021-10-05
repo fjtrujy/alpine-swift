@@ -5,7 +5,7 @@ RUN apk add \
   build-base \
   curl \
   bash \
-  clang \
+  clang clang-dev llvm compiler-rt compiler-rt-static lld musl-dev gcc \
   cmake \
   git \
   icu-dev \
@@ -23,7 +23,8 @@ RUN apk add \
   swig \
   tzdata \
   unzip \
-  libuuid
+  libuuid \
+  re2c
 
 RUN apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
   sccache
