@@ -4,6 +4,7 @@ FROM alpine:latest
 RUN apk add \
   build-base \
   curl \
+  bash \
   clang \
   cmake \
   git \
@@ -28,8 +29,8 @@ RUN apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
   sccache
 
 # We require to have six module
-RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
-  python3 get-pip.py
+RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py && \
+  python get-pip.py
 RUN pip install six
 
 # Check dependencies https://github.com/apple/swift/blob/main/docs/HowToGuides/GettingStarted.md#spot-check-dependencies
